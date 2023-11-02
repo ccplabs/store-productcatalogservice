@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM golang:1.21.3-alpine AS builder
+FROM docker.io/golang:1.21.3-alpine3.18 AS builder
 RUN apk add --no-cache ca-certificates git
 RUN apk add build-base
 
@@ -26,7 +26,7 @@ COPY . .
 ARG SKAFFOLD_GO_GCFLAGS
 RUN go build -gcflags="${SKAFFOLD_GO_GCFLAGS}" -o /productcatalogservice .
 
-FROM alpine
+FROM docker.io/alpine:3.18
 RUN apk add --no-cache ca-certificates
 
 WORKDIR /src
