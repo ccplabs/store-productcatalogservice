@@ -26,7 +26,7 @@ COPY . .
 ARG SKAFFOLD_GO_GCFLAGS
 RUN go build -gcflags="${SKAFFOLD_GO_GCFLAGS}" -o /productcatalogservice .
 
-FROM alpine:3.18.3
+FROM alpine:3.18
 RUN apk add --no-cache ca-certificates
 
 WORKDIR /src
